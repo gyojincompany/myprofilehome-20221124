@@ -30,19 +30,28 @@
 						<td class="content">
 							<center>						
 							<table border="0" cellspacing="0" cellpadding="10">
-								<form action="loginOk" method="post">
+								<form action="joinOk" method="post">
 									<tr>
 										<td><span class="content_text01">아 이 디 : </span></td>
-										<td><input class="input_type01" type="text" name="mid"></td>
+										<td><input class="input_type01" type="text" name="qid"></td>
 									</tr>
 									<tr>
-										<td><span class="content_text01">비밀번호 : </span></td>
-										<td><input class="input_type01" type="password" name="mpw"></td>
+										<td><span class="content_text01">글 쓴 이 : </span></td>
+										<td><input class="input_type01" type="text" name="qname"></td>
 									</tr>
+									<tr>
+										<td><span class="content_text01">질문내용 : </span></td>
+										<td><textarea class="textarea_type01" rows="5" cols="30" name="qcontent"></textarea></td>
+									</tr>									
+									<tr>
+										<td><span class="content_text01">이 메 일 : </span></td>
+										<td><input class="input_type01" type="text" name="qemail"></td>
+									</tr>
+									
 									<tr>
 										<td colspan="2">
-											<input class="button_type01" type="submit" value="로그인">&nbsp;&nbsp;
-											<input class="button_type01" type="button" value="회원가입" onclick="script:window.location='join'">
+											<input class="button_type01" type="submit" value="질문하기">&nbsp;&nbsp;
+											<input class="button_type01" type="button" value="글목록" onclick="script:window.location='list'">
 										</td>
 									</tr>
 								</form>							

@@ -42,6 +42,14 @@ input.button_type01 {
 	padding: 5px;
 }
 
-
+textarea.textarea_type01 {
+	background-color: #ffffff;
+	border: 1px solid #FED39F;
+	width: 250px;
+	font-family: Arial;
+	font-size: 20px;
+	color: #2a2a2a;
+	padding: 5px;
+}
 
 

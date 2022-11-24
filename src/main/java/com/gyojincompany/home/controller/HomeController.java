@@ -35,4 +35,16 @@ public class HomeController {
 		
 		return "login";
 	}
+	
+	@RequestMapping(value = "/join")
+	public String join() {
+		
+		return "join";
+	}
+	
+	@RequestMapping(value = "/question")
+	public String question() {
+		
+		return "question";
+	}
 }
