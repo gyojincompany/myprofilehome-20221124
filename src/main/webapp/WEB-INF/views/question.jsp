@@ -30,7 +30,7 @@
 						<td class="content">
 							<center>						
 							<table border="0" cellspacing="0" cellpadding="10">
-								<form action="joinOk" method="post">
+								<form action="questionOk" method="post">
 									<tr>
 										<td><span class="content_text01">아 이 디 : </span></td>
 										<td><input class="input_type01" type="text" name="qid"></td>
