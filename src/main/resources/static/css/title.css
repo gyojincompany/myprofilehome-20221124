@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+body {
+	margin: 0;
+	padding: 0;
+}
+
 span.title01 {
 	font-size: 70px;
 	color: #AF460F;
@@ -34,7 +39,7 @@ td.skillbox {
 
 td.picbox {
 	background-color: #330000;
-	align-content: center;
+	text-align: center;
 	
 }
 

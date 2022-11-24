@@ -11,4 +11,16 @@ public class HomeController {
 		
 		return "index";
 	}
+	
+	@RequestMapping(value = "/profile")
+	public String profile() {
+		
+		return "profile";
+	}
+	
+	@RequestMapping(value = "/contact")
+	public String contact() {
+		
+		return "contact";
+	}
 }
