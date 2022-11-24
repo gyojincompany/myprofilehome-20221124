@@ -12,6 +12,12 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/index")
+	public String index() {
+		
+		return "index";
+	}
+	
 	@RequestMapping(value = "/profile")
 	public String profile() {
 		
@@ -22,5 +28,11 @@ public class HomeController {
 	public String contact() {
 		
 		return "contact";
+	}
+	
+	@RequestMapping(value = "/login")
+	public String login() {
+		
+		return "login";
 	}
 }
