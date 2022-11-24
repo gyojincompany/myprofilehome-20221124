@@ -8,6 +8,10 @@
 	<insert id="memberJoin">
 		INSERT INTO profile_member(mid, mpw, mname, memail) VALUES(#{param1}, #{param2}, #{param3}, #{param4}) 
 	</insert>
+	
+	<select id="checkId" parameterType="int">
+		SELECT COUNT(*) FROM profile_member WHERE mid=#{param1}
+	</select>
 </mapper>
 	
 	
