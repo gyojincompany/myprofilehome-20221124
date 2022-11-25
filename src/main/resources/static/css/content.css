@@ -42,6 +42,21 @@ input.button_type01 {
 	padding: 5px;
 }
 
+input.button_type01:hover {
+	background-color: #9e2801;
+	border: 2px solid #ffffff;
+	width: 180px;
+	height: 40px;
+	font-family: malgun;
+	font-size: 20px;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 5px;
+	cursor: pointer;
+}
+
+
+
 textarea.textarea_type01 {
 	background-color: #ffffff;
 	border: 1px solid #FED39F;
