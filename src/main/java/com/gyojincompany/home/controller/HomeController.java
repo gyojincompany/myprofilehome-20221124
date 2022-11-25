@@ -198,5 +198,19 @@ public class HomeController {
 		return "questionList";
 	}
 	
+	@RequestMapping(value = "/questionView")
+	public String questionView(HttpServletRequest request, Model model) {
+		
+		String qnum = request.getParameter("qnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		QBoardDto qBoardDto = dao.questionView(qnum);
+		
+		model.addAttribute("qdto", qBoardDto);
+		model.addAttribute("qid", qBoardDto.getQid());//글쓴 유저의 id값 전송
+		
+		return "questionView";
+	}
 	
 }
