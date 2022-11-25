@@ -55,7 +55,15 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/question")
-	public String question() {
+	public String question(HttpSession session, Model model) {
+			
+		String sessionId = (String) session.getAttribute("memberId");
+		
+		if(sessionId == null) {//로그인 상태 확인
+			model.addAttribute("memberId", "GUEST");
+		} else {
+			model.addAttribute("memberId", sessionId);
+		}
 		
 		return "question";
 	}
@@ -117,6 +125,9 @@ public class HomeController {
 		if(checkIdPwFlag == 1) { //로그인 실행 
 			
 			session.setAttribute("memberId", mid);
+			MemberDto memberDto = dao.getMemberInfo(mid);
+			
+			model.addAttribute("memberDto", memberDto);
 			model.addAttribute("mid", mid);
 		}
 		
@@ -124,7 +135,38 @@ public class HomeController {
 		return "loginOk";
 	}
 	
+	@RequestMapping(value = "/memberModify")
+	public String memberModify(Model model, HttpSession session) {
+		
+		String sessionId = (String) session.getAttribute("memberId");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		MemberDto memberDto = dao.getMemberInfo(sessionId);
+		
+		model.addAttribute("memberDto", memberDto);
+		
+		return "memberModify";
+	}
 	
+	@RequestMapping(value = "/memberModifyOk")
+	public String memberModifyOk(HttpServletRequest request,  Model model) {
+		
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		String mname = request.getParameter("mname");
+		String memail = request.getParameter("memail");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.memberModify(mid, mpw, mname, memail);
+		
+		MemberDto memberDto = dao.getMemberInfo(mid);//수정된 회원정보 다시 가져오기
+		
+		model.addAttribute("memberDto", memberDto);
+		
+		return "memberModifyOk";
+	}
 	
 	
 	
