@@ -19,5 +19,6 @@ public interface IDao {
 	public List<QBoardDto> questionList();//질문게시판 리스트 가져오기 select
 	public QBoardDto questionView(String qnum);//선택한 글 번호의 정보 가져오기 select
 	public void questionModify(String qnum, String qname, String qcontent, String qemail);//해당 글번호로 조회하여 질문 수정 update
+	public void questionDelete(String qnum);//글 삭제 delete
 	
 }

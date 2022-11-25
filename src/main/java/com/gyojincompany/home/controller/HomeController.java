@@ -243,4 +243,17 @@ public class HomeController {
 		return "redirect:list";
 	}
 	
+	@RequestMapping(value = "/questionDelete")
+	public String questionDelete(HttpServletRequest request) {
+		
+		String qnum= request.getParameter("qnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.questionDelete(qnum);
+		
+		return "redirect:list";
+	}
+	
+	
 }

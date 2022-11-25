@@ -44,6 +44,10 @@
 	<update id="questionModify">
 		UPDATE profile_board SET qname=#{param2}, qcontent=#{param3}, qemail=#{param4} WHERE qnum=#{param1}
 	</update>
+	
+	<delete id="questionDelete">
+		DELETE FROM profile_board WHERE qnum=#{param1}
+	</delete>
 </mapper>
 	
 	
