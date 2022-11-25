@@ -168,8 +168,26 @@ public class HomeController {
 		return "memberModifyOk";
 	}
 	
+	@RequestMapping(value = "/questionOk")
+	public String questionOk(HttpServletRequest request) {
+		
+		String qid = request.getParameter("qid");//글쓴유저 아이디
+		String qname = request.getParameter("qname");//글쓴유저 이름
+		String qcontent = request.getParameter("qcontent");//글쓴 질문 내용
+		String qemail = request.getParameter("qemail");//글쓴유저 이메일
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.writeQuestion(qid, qname, qcontent, qemail);
+		
+		return "redirect:list";
+	}
 	
-	
+	@RequestMapping(value = "list")
+	public String list() {
+		
+		return "questionList";
+	}
 	
 	
 }

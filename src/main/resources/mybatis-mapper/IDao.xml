@@ -27,6 +27,12 @@
 		UPDATE profile_member SET mpw=#{param2}, mname=#{param3}, memail=#{param4} WHERE mid=#{param1}
 	</update>
 	
+	<!-- 게시판 SQL -->
+	
+	<insert id="writeQuestion">
+		INSERT INTO profile_board(qnum, qid, qname, qcontent, qemail) VALUES(profile_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}) 
+	</insert>
+	
 </mapper>
 	
 	
