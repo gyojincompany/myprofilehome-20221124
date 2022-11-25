@@ -213,4 +213,34 @@ public class HomeController {
 		return "questionView";
 	}
 	
+	@RequestMapping(value = "/questionModify")
+	public String questionModify(HttpServletRequest request, Model model) {
+		
+		String qnum = request.getParameter("qnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		QBoardDto qBoardDto = dao.questionView(qnum);
+		
+		model.addAttribute("qdto", qBoardDto);
+		
+		
+		return "questionModify";
+	}
+	
+	@RequestMapping(value = "/questionModifyOk")
+	public String questionModifyOk(HttpServletRequest request) {
+		
+		String qnum = request.getParameter("qnum");
+		String qname = request.getParameter("qname");
+		String qcontent = request.getParameter("qcontent");
+		String qemail = request.getParameter("qemail");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.questionModify(qnum, qname, qcontent, qemail);
+		
+		return "redirect:list";
+	}
+	
 }
