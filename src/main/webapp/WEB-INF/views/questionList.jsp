@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/title.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/board.css">
 <title>** Gyojin's Profile **</title>
 </head>
 <body>
@@ -30,35 +32,23 @@
 						<td class="content">
 							<br><br>
 							<center>
-							<table width="80%" border="1" cellspacing="0" cellpadding="10">
+							<table width="80%" border="0" cellspacing="0" cellpadding="10">
 								<tr>
 									<th class="board_title">번호</th>
 									<th class="board_title">아이디</th>
 									<th class="board_title" width="50%">질문내용</th>
 									<th class="board_title">글쓴이</th>
 									<th class="board_title">등록일</th>
-								</tr>	
+								</tr>
+								<c:forEach items="${qdtos }" var="qdto">
 								<tr>
-									<td class="board_content">10</td>
-									<td class="board_content">tiger</td>
-									<td class="board_content">질문드립니다.안녕하세요.</td>
-									<td class="board_content">홍길동</td>
-									<td class="board_content">2022-11-25 02:34</td>
+									<td class="board_content01">${qdto.qnum }</td>
+									<td class="board_content01">${qdto.qid }</td>
+									<td class="board_content02">${qdto.qcontent }</td>
+									<td class="board_content01">${qdto.qname }</td>
+									<td class="board_content01">${qdto.qdate }</td>
 								</tr>						
-								<tr>
-									<td class="board_content">11</td>
-									<td class="board_content">tiger</td>
-									<td class="board_content">질문드립니다.안녕하세요.</td>
-									<td class="board_content">홍길동</td>
-									<td class="board_content">2022-11-25 02:34</td>
-								</tr>
-								<tr>
-									<td class="board_content">12</td>
-									<td class="board_content">tiger</td>
-									<td class="board_content">질문드립니다.안녕하세요.</td>
-									<td class="board_content">홍길동</td>
-									<td class="board_content">2022-11-25 02:34</td>
-								</tr>
+								</c:forEach>	
 								<tr>
 									<td colspan="5" align="right">
 										<input type="button" value="질문하기" class="button_type01" onclick="script:window.location='question'">

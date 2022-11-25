@@ -1,5 +1,7 @@
 package com.gyojincompany.home.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gyojincompany.home.dao.IDao;
 import com.gyojincompany.home.dto.MemberDto;
+import com.gyojincompany.home.dto.QBoardDto;
 
 @Controller
 public class HomeController {
@@ -184,7 +187,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "list")
-	public String list() {
+	public String list(Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		List<QBoardDto> qboardDtos = dao.questionList();
+		
+		model.addAttribute("qdtos", qboardDtos);
 		
 		return "questionList";
 	}

@@ -33,6 +33,10 @@
 		INSERT INTO profile_board(qnum, qid, qname, qcontent, qemail) VALUES(profile_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}) 
 	</insert>
 	
+	<select id="questionList" resultType="com.gyojincompany.home.dto.QBoardDto">
+		SELECT * FROM profile_board ORDER BY qnum DESC 
+	</select>
+	
 </mapper>
 	
 	
