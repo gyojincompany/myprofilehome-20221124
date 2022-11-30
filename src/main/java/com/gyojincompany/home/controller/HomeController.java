@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gyojincompany.home.dao.IDao;
+import com.gyojincompany.home.dto.Criteria;
 import com.gyojincompany.home.dto.MemberDto;
+import com.gyojincompany.home.dto.PageDto;
 import com.gyojincompany.home.dto.QBoardDto;
 
 @Controller
@@ -187,13 +189,32 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "list")
-	public String list(Model model) {
+	public String list(Model model, Criteria cri, HttpServletRequest request) {
 		
+		int pageNumInt = 0;
+		if(request.getParameter("pageNum") == null) {
+			pageNumInt = 1;
+			cri.setPageNum(pageNumInt);
+			
+		} else {
+			pageNumInt = Integer.parseInt(request.getParameter("pageNum"));
+			cri.setPageNum(pageNumInt);
+		}
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		List<QBoardDto> qboardDtos = dao.questionList();
+		int totalRecord = dao.boardAllCount();
 		
+		//cri.setPageNum();
+		
+		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount());//해당 페이지의 시작번호를 설정
+		
+		PageDto pageDto = new PageDto(cri, totalRecord);
+		
+		List<QBoardDto> qboardDtos = dao.questionList(cri);
+		
+		model.addAttribute("pageMaker", pageDto);
 		model.addAttribute("qdtos", qboardDtos);
+		model.addAttribute("currPage", pageNumInt);
 		
 		return "questionList";
 	}

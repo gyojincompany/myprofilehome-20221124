@@ -2,6 +2,7 @@ package com.gyojincompany.home.dao;
 
 import java.util.List;
 
+import com.gyojincompany.home.dto.Criteria;
 import com.gyojincompany.home.dto.MemberDto;
 import com.gyojincompany.home.dto.QBoardDto;
 
@@ -16,9 +17,10 @@ public interface IDao {
 	
 	//질문게시판
 	public void writeQuestion(String qid, String qname, String qcontent, String qemail);//질문하기 insert
-	public List<QBoardDto> questionList();//질문게시판 리스트 가져오기 select
+	public List<QBoardDto> questionList(Criteria cri);//질문게시판 리스트 가져오기 select
 	public QBoardDto questionView(String qnum);//선택한 글 번호의 정보 가져오기 select
 	public void questionModify(String qnum, String qname, String qcontent, String qemail);//해당 글번호로 조회하여 질문 수정 update
 	public void questionDelete(String qnum);//글 삭제 delete
+	public int boardAllCount();//게시판 총 글의 개수 가져오기
 	
 }
